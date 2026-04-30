@@ -1,0 +1,13 @@
+node_modules/
+build/
+build-check/
+build-verify-2/
+build-verify-3/
+build-verify-4/
+build-verify-5/
+build-verify-6/
+build-verify-7/
+.env
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

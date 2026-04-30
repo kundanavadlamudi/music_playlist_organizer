@@ -1,0 +1,130 @@
+/* =============================================
+   RHYTHMIX — Add Song Modal Styles
+   ============================================= */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal {
+  background: var(--bg-modal);
+  border: 1px solid var(--border-strong);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 540px;
+  box-shadow: var(--shadow-lg);
+  animation: fadeInUp 0.3s ease;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.title {
+  font-size: 18px;
+  color: var(--text-primary);
+}
+.closeBtn {
+  width: 32px; height: 32px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-muted);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  transition: all 0.15s;
+}
+.closeBtn:hover { color: var(--text-primary); background: var(--bg-card-hover); }
+
+.form { padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 16px; }
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.row:last-child { grid-template-columns: 1fr 1fr 1fr; }
+
+.field { display: flex; flex-direction: column; gap: 5px; }
+.label { font-size: 12px; font-weight: 500; color: var(--text-secondary); letter-spacing: 0.04em; text-transform: uppercase; }
+
+.input {
+  padding: 10px 13px;
+  background: var(--bg-secondary);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+.input::placeholder { color: var(--text-muted); }
+.input:focus { outline: none; border-color: var(--accent); }
+.input.invalid { border-color: #ef4444; }
+.fieldError { font-size: 11px; color: #ef4444; }
+
+/* Mood options */
+.moodGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.moodOpt {
+  padding: 9px 6px;
+  background: var(--bg-secondary);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: capitalize;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  transition: all 0.15s ease;
+}
+.moodOpt:hover { border-color: var(--accent); color: var(--text-primary); }
+.moodOpt.moodActive {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Footer */
+.footer { display: flex; gap: 10px; justify-content: flex-end; padding-top: 4px; }
+.cancelBtn {
+  padding: 10px 20px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 14px;
+  transition: all 0.15s;
+}
+.cancelBtn:hover { background: var(--bg-card-hover); }
+.addBtn {
+  padding: 10px 22px;
+  background: var(--gradient-hero);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.addBtn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+@media (max-width: 480px) {
+  .row { grid-template-columns: 1fr !important; }
+  .moodGrid { grid-template-columns: repeat(2, 1fr); }
+}

@@ -1,0 +1,25 @@
+/* =============================================
+   RHYTHMIX — Playlist Styles
+   ============================================= */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  gap: 12px;
+  animation: fadeIn 0.3s ease;
+}
+.emptyIcon { font-size: 48px; opacity: 0.5; }
+.emptyText {
+  color: var(--text-muted);
+  font-size: 14px;
+  text-align: center;
+}

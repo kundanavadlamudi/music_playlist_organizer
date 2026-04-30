@@ -1,0 +1,212 @@
+/* =============================================
+   RHYTHMIX — SongCard Styles
+   ============================================= */
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  animation: fadeInUp 0.4s ease both;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-hero);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.card:hover::before { opacity: 0.03; }
+
+.card.playing {
+  border-color: var(--accent);
+  background: var(--bg-card-hover);
+  box-shadow: 0 0 0 1px var(--accent), var(--shadow-md);
+  animation: glow 2.5s ease-in-out infinite;
+}
+
+/* Rank */
+.rank {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--text-muted);
+  min-width: 28px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.topRank { font-size: 18px; }
+
+/* Artwork */
+.artwork {
+  width: 48px; height: 48px;
+  background: var(--bg-secondary);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+  position: relative;
+  border: 1.5px solid var(--border);
+  overflow: hidden;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 0 12px var(--mood-color, transparent);
+}
+.card:hover .artwork { border-color: var(--accent); }
+.playing .artwork {
+  border-color: var(--accent);
+  box-shadow: 0 0 16px var(--accent), inset 0 0 12px var(--mood-color, transparent);
+}
+
+.artworkEmoji { transition: opacity 0.2s ease; }
+.card:hover .artworkEmoji { opacity: 0; }
+
+.playOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--accent);
+  color: #fff;
+  font-size: 16px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  border-radius: 8px;
+}
+.card:hover .playOverlay { opacity: 1; }
+.playing .playOverlay { display: none; }
+
+/* Equalizer animation */
+.equalizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 24px;
+}
+.eqBar {
+  display: block;
+  width: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+  animation: equalizerBar 0.6s ease-in-out infinite alternate;
+  height: 4px;
+}
+
+/* Info */
+.info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.15s;
+}
+.card:hover .name, .playing .name { color: var(--accent); }
+
+.artist {
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+}
+.moodBadge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 100px;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+  flex-shrink: 0;
+}
+.duration {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.statIcon { font-size: 12px; }
+.scorePill {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
+  min-width: 78px;
+}
+.favBtn, .removeBtn {
+  min-width: 78px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.15s ease;
+  color: var(--text-muted);
+}
+.favBtn:hover { background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.3); color: #ef4444; }
+.favBtn.favorited { background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.3); color: #ef4444; }
+.removeBtn:hover { background: rgba(239, 68, 68, 0.08); border-color: rgba(239, 68, 68, 0.2); color: #ef4444; }
+
+@media (max-width: 640px) {
+  .stats { display: none; }
+  .card { gap: 10px; padding: 10px 12px; }
+}
+@media (max-width: 480px) {
+  .rank { display: none; }
+  .meta { flex-wrap: wrap; }
+}
